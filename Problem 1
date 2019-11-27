@@ -1,0 +1,14 @@
+import pandas as pd
+M = {'Student': ['Ice Bear', 'Panda', 'Grizzly'], 'Math': [80, 95, 79]}
+Math = pd.DataFrame(M, columns=['Student','Math'])
+E = {'Student': ['Ice Bear', 'Panda', 'Grizzly'], 'Electronics': [85, 81, 83]}
+Electronics = pd.DataFrame(E, columns=['Student','Electronics'])
+G = {'Student': ['Ice Bear', 'Panda', 'Grizzly'], 'GEAS': [90, 79, 93]}
+Geas = pd.DataFrame(G, columns=['Student','GEAS'])
+Es = {'Student': ['Ice Bear', 'Panda', 'Grizzly'], 'ESAT': [93, 89, 88]}
+Esat = pd.DataFrame(Es, columns=['Student','ESAT'])
+me = pd.merge(Math,Electronics)
+ge = pd.merge(Geas,Esat)
+mege = pd.merge(me,ge)
+longbear = pd.melt(mege,id_vars='Student',value_vars=['Math','Electronics','GEAS','ESAT'])
+bear = longbear.rename(columns={'variable':'Subject','value':'Grades'})
